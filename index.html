@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沈砚秋 — 设计 / 方向</title>
+    <style>
+        :root {
+            --bg: #f2efe9;
+            --paper: #faf8f4;
+            --ink: #1a1815;
+            --ink-soft: #55504a;
+            --ink-faint: #8f887e;
+            --ink-ghost: #b5afa5;
+            --accent: #b0442c;
+            --accent-deep: #8a3321;
+            --line: #d8d2c7;
+            --line-hair: #e6e1d8;
+            --green: #5b7f5e;
+            /* 英文字体优先使用 Times New Roman，中文回退到宋体系 */
+            --font-serif: "Times New Roman", "Times", "Songti SC", "SimSun", serif;
+            --font-sans: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+            --font-mono: "SF Mono", "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", "Menlo", monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--paper);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: var(--font-serif);
+            font-size: 16px;
+            line-height: 1.75;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-image:
+                radial-gradient(ellipse at 15% 10%, rgba(176,68,44,0.02) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 90%, rgba(26,24,21,0.025) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.015'/%3E%3C/svg%3E");
+        }
+
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ========== 顶部导航 ========== */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 36px 0 20px 0;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 56px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .top-bar .wordmark {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            text-decoration: none;
+            line-height: 1;
+        }
+        .top-bar .wordmark span {
+            color: var(--accent);
+            font-weight: 400;
+        }
+        .top-bar .nav-meta {
+            display: flex;
+            align-items: baseline;
+            gap: 28px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+        .top-bar .nav-meta a {
+            color: var(--ink-soft);
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+        .top-bar .nav-meta a:hover {
+            color: var(--accent);
+        }
+        .top-bar .nav-meta .available-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            margin-right: 6px;
+            animation: breathe 4s ease-in-out infinite;
+        }
+        @keyframes breathe {
+            0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(91,127,94,0.25); }
+            50% { opacity: 0.5; box-shadow: 0 0 0 4px rgba(91,127,94,0); }
+        }
+
+        /* ========== 英雄区 ========== */
+        .hero {
+            margin-bottom: 80px;
+        }
+        .hero .kicker {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .hero .kicker::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--accent);
+            opacity: 0.6;
+        }
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1.08;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            margin-bottom: 24px;
+            max-width: 720px;
+        }
+        .hero h1 .accent-italic {
+            color: var(--accent);
+            font-style: italic;
+            font-weight: 400;
+        }
+        .hero .lede {
+            font-size: 18px;
+            line-height: 1.85;
+            color: var(--ink-soft);
+            max-width: 560px;
+            margin-bottom: 40px;
+        }
+        .hero .lede strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+        .hero .scroll-cue {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink-ghost);
+        }
+        .hero .scroll-cue .line {
+            width: 44px;
+            height: 1px;
+            background: var(--line);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero .scroll-cue .line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            animation: scrollLine 3s ease-in-out infinite;
+        }
+        @keyframes scrollLine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        /* ========== 分区标题 ========== */
+        .section-head {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--line);
+        }
+        .section-head .index {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+        }
+        .section-head .title {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+        .section-head .extra {
+            margin-left: auto;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+
+        /* ========== 作品区 ========== */
+        .works {
+            margin-bottom: 96px;
+        }
+        .work-item {
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            gap: 20px;
+            padding: 26px 0;
+            border-bottom: 1px solid var(--line-hair);
+            text-decoration: none;
+            color: var(--ink);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            align-items: start;
+        }
+        .work-item:first-child {
+            border-top: 1px solid var(--line-hair);
+        }
+        .work-item:hover {
+            padding-left: 12px;
+        }
+        .work-item:hover .work-title {
+            color: var(--accent);
+        }
+        .work-item:hover .work-arrow {
+            transform: translateX(5px);
+            color: var(--accent);
+        }
+        .work-index {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--ink-faint);
+            padding-top: 5px;
+            letter-spacing: 0.06em;
+        }
+        .work-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .work-title {
+            font-size: 19px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+        .work-meta {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.08em;
+            color: var(--ink-faint);
+            text-transform: uppercase;
+        }
+        .work-desc {
+            font-size: 14px;
+            color: var(--ink-soft);
+            margin-top: 4px;
+            max-width: 480px;
+            line-height: 1.7;
+        }
+        .work-arrow {
+            font-size: 18px;
+            color: var(--ink-ghost);
+            align-self: center;
+            transition: all 0.3s ease;
+            padding-right: 4px;
+        }
+
+        /* ========== 关于区 ========== */
+        .about {
+            margin-bottom: 96px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .about .about-text p {
+            margin-bottom: 18px;
+            color: var(--ink-soft);
+            font-size: 15px;
+            line-height: 1.85;
+        }
+        .about .about-text p:first-child {
+            font-size: 17px;
+            color: var(--ink);
+            line-height: 1.8;
+        }
+        .about .about-text strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+        .about-facts {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            line-height: 2.4;
+            color: var(--ink-faint);
+            letter-spacing: 0.04em;
+            padding-top: 6px;
+        }
+        .about-facts .fact-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted var(--line);
+            padding: 4px 0;
+        }
+        .about-facts .fact-row .label {
+            color: var(--ink-faint);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 10px;
+        }
+        .about-facts .fact-row .value {
+            color: var(--ink);
+            font-weight: 500;
+            text-align: right;
+        }
+
+        /* ========== 联系区 ========== */
+        .contact {
+            margin-bottom: 80px;
+        }
+        .contact .contact-inner {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            padding: 48px 44px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact .contact-inner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0.5;
+        }
+        .contact .contact-title {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+        .contact .contact-sub {
+            font-size: 15px;
+            color: var(--ink-soft);
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+        .contact .contact-email {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 4px;
+            transition: all 0.3s ease;
+            margin-bottom: 28px;
+        }
+        .contact .contact-email:hover {
+            color: var(--accent-deep);
+            border-color: var(--accent-deep);
+            letter-spacing: 0.1em;
+        }
+        .contact .contact-socials {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            flex-wrap: wrap;
+        }
+        .contact .contact-socials a {
+            color: var(--ink-faint);
+            text-decoration: none;
+            transition: color 0.25s ease;
+        }
+        .contact .contact-socials a:hover {
+            color: var(--ink);
+        }
+
+        /* ========== 页脚 ========== */
+        .footer {
+            padding: 28px 0 40px 0;
+            border-top: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-family: var(--font-mono);
+            font-size: 9px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-ghost);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .footer .footer-note {
+            color: var(--ink-faint);
+        }
+
+        /* ========== 响应式 ========== */
+        @media (max-width: 700px) {
+            .container {
+                padding: 0 20px;
+            }
+            .top-bar {
+                padding-top: 24px;
+                margin-bottom: 36px;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .hero {
+                margin-bottom: 56px;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero .lede {
+                font-size: 16px;
+            }
+            .about {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            .work-item {
+                grid-template-columns: 32px 1fr 20px;
+                gap: 12px;
+                padding: 20px 0;
+            }
+            .work-title {
+                font-size: 16px;
+            }
+            .work-desc {
+                font-size: 13px;
+            }
+            .contact .contact-inner {
+                padding: 32px 20px;
+            }
+            .contact .contact-title {
+                font-size: 24px;
+            }
+            .section-head .extra {
+                display: none;
+            }
+        }
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+            .work-item {
+                grid-template-columns: 24px 1fr 16px;
+                gap: 8px;
+            }
+            .work-title {
+                font-size: 15px;
+            }
+            .work-desc {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 导航 -->
+        <header class="top-bar">
+            <a href="/" class="wordmark">THZ<span>.</span></a>
+        </header>
+
+        <!-- 英雄区 -->
+        <section class="hero">
+            <p class="kicker"></p>
+            <h1>
+                Unleash your creativity,<br/>software shapes the future.
+            </h1>
+            <p class="lede">
+                Hi,there👏<br/>
+                I'm THZ.
+            </p>
+            <div class="scroll-cue">
+                <span class="line"></span>
+                向下浏览
+            </div>
+        </section>
+<!--
+       
+        <section id="works" class="works">
+            <div class="section-head">
+                <span class="index">01</span>
+                <span class="title">近期工作</span>
+                <span class="extra">2023 — 2026</span>
+            </div>
+
+            <a class="work-item" href="#" onclick="return false;">
+                <span class="work-index">01</span>
+                <div class="work-info">
+                    <span class="work-title">《风土》地方文化季刊</span>
+                    <span class="work-meta">书籍设计 / 2026</span>
+                    <span class="work-desc">为一份关注岭南地方文化的独立季刊重新梳理版式系统。从字体选择到网格搭建，让长文阅读回归平静。</span>
+                </div>
+                <span class="work-arrow">→</span>
+            </a>
+
+            <a class="work-item" href="#" onclick="return false;">
+                <span class="work-index">02</span>
+                <div class="work-info">
+                    <span class="work-title">「半山」茶室 品牌形象</span>
+                    <span class="work-meta">品牌设计 / 2025</span>
+                    <span class="work-desc">一间藏在佛山老城区的茶室。用一套低饱和度的暖灰和手写招牌，回应「日常茶事」的朴素主张。</span>
+                </div>
+                <span class="work-arrow">→</span>
+            </a>
+
+            <a class="work-item" href="#" onclick="return false;">
+                <span class="work-index">03</span>
+                <div class="work-info">
+                    <span class="work-title">「无声」实验短片节</span>
+                    <span class="work-meta">视觉系统 / 2025</span>
+                    <span class="work-desc">一个没有对白、只靠画面叙事的短片展。用极简的图形和大量留白搭建整个活动的视觉框架。</span>
+                </div>
+                <span class="work-arrow">→</span>
+            </a>
+
+            <a class="work-item" href="#" onclick="return false;">
+                <span class="work-index">04</span>
+                <div class="work-info">
+                    <span class="work-title">「纸页」个人博客主题</span>
+                    <span class="work-meta">网页设计 / 2024</span>
+                    <span class="work-desc">一款为写作者设计的极简博客模板。不依赖任何前端框架，重视脚注、引文和行距的节奏感。</span>
+                </div>
+                <span class="work-arrow">→</span>
+            </a>
+
+            <a class="work-item" href="#" onclick="return false;">
+                <span class="work-index">05</span>
+                <div class="work-info">
+                    <span class="work-title">「夜航」独立书店</span>
+                    <span class="work-meta">空间导视 / 2023</span>
+                    <span class="work-desc">一家只在夜间营业的书店。低对比度的引导系统和手工编号书架，让找书变成一种安静的探索。</span>
+                </div>
+                <span class="work-arrow">→</span>
+            </a>
+        </section>
+
+        <section id="about" class="about">
+            <div class="about-text">
+                <p>
+                    我是沈砚秋，一名<strong>独立设计师</strong>，现居佛山。
+                    入行前三年在广告公司做视觉执行，后来决定离开，做更慢、更接近事物本质的工作。
+                </p>
+                <p>
+                    我主要和<strong>文化机构、独立出版、以及愿意花时间打磨品牌的小团队</strong>合作。
+                    不接急单，不套模板。每个项目都从对话开始，以能经受时间检验的交付结束。
+                </p>
+                <p>
+                    工作之外，我在做陶、读旧书、逛菜市场。
+                    我相信设计最终是关于<strong>人如何阅读、如何行走、如何感知世界</strong>。
+                </p>
+            </div>
+            <div class="about-facts">
+                <div class="fact-row">
+                    <span class="label">服务</span>
+                    <span class="value">品牌视觉 / 编辑设计 / 网页</span>
+                </div>
+                <div class="fact-row">
+                    <span class="label">工具</span>
+                    <span class="value">InDesign / Figma / 手绘</span>
+                </div>
+                <div class="fact-row">
+                    <span class="label">周期</span>
+                    <span class="value">4–10 周</span>
+                </div>
+                <div class="fact-row">
+                    <span class="label">所在地</span>
+                    <span class="value">广东 · 佛山</span>
+                </div>
+                <div class="fact-row">
+                    <span class="label">合作方式</span>
+                    <span class="value">远程 + 本地</span>
+                </div>
+                <div class="fact-row">
+                    <span class="label">原则</span>
+                    <span class="value">不套模板 · 不追潮流</span>
+                </div>
+            </div>
+        </section>
+-->
+
+        <!-- 联系区 -->
+        <section id="contact" class="contact">
+            <div class="contact-inner">
+                <p class="contact-title">联系</p>
+                <p class="contact-sub">这些平台都可以。</p>
+                <a href="mailto:hello@example.com" class="contact-email">hello@example.com</a>
+                <br>
+                <div class="contact-socials">
+                    <a href="https://github.com/FranklinCN" onclick="return false;">GitHub</a>
+                    <a href="http://space.bilibili.com/1910324323" onclick="return false;">Bilibili</a>
+                    <a href="https://www.facebook.com/profile.php?id=100089017057508" onclick="return false;">Facebook</a>
+                    <a href="https://x.com/franrklin" onclick="return false;">X</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <span>Copyright © 2026 THZ.</span>
+            <span class="footer-note"></span>
+            <span>CHINA</span>
+        </footer>
+
+    </div>
+</body>
+</html>
